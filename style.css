@@ -11,7 +11,7 @@
     --stroke-color: rgba(121, 23, 124, 0.719);
     --surface-color: rgba(0, 0, 0, 0.116);
     --surface-color-hover: rgba(200, 68, 226, 0.301);
-    --highlight-color: rgba(121, 23, 124, 0.719);
+    --highlight-color: rgba(222, 49, 228, 0.295);
     --switch-bg-url: url(./assets/moon-stars.svg);
 }
 
@@ -21,7 +21,7 @@
     --stroke-color: rgba(82, 8, 88, 0.993);
     --surface-color: rgba(212, 62, 226, 0.062);
     --surface-color-hover: rgba(238, 89, 238, 0.267);
-    --highlight-color: rgba(238, 89, 238, 0.267); 
+    --highlight-color: rgba(238, 89, 238, 0.384); 
     --switch-bg-url: url(./assets/sun.svg); 
 }
 
@@ -85,11 +85,11 @@ body * {
     
 }
 #switch button {
-width: 32px;
+    width: 32px;
     height: 32px;
     background: white var(--switch-bg-url) no-repeat center;
-     border: 0;
-border-radius: 50%;
+    border: 0;
+    border-radius: 50%;
 
 
 position: absolute;
@@ -97,11 +97,16 @@ top: 50%;
 left: 0;
 z-index: 1;
 transform: translateY(-50%);
+
+animation: slide-button-out 0.2s;
+}
+
+#switch button:hover {
+    outline: 8px solid var(--highlight-color)
 }
 
 .light #switch button {
-right: 0;
-left: initial;
+animation: slide-button 0.2s forwards;
 
 }
 
@@ -113,7 +118,7 @@ left: initial;
     border: 1px solid var(--stroke-color);
     backdrop-filter: blur(4px) ;
     -webkit-backdrop-filter: blur(4px);
-border-radius: 9999px;
+    border-radius: 9999px;
 }
 
 #switch:checked + label {
@@ -221,4 +226,28 @@ footer {
     .light {
         --bg-url: url(./assets/bg-desktop-light.jpg);
     }
+}
+
+/* animation */
+
+@keyframes slide-button {
+    from {
+        left: 0;
+    }
+
+    to{
+        left: 50%;
+    }
+}
+
+@keyframes slide-button-out {
+    from {
+        left: 50%;
+    }
+
+    to {
+        left: 0;
+    }
+
+
 }
